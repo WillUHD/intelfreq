@@ -60,6 +60,8 @@ If you take a look at the result by running `./voltageshift read 0x610` and conv
 > - `8`: Another arbitrary number
 > - `320`: PL2 (for all Intel Macs, it's set at 100W)
 
+Note that this is different from Intel's official 64-bit MSR specification, meaning the T2 is definitely acting as a proxy for enhanced security. Then again, writing an invalid value to this slot will crash the system here so it's unclear what the proxy is doing exactly. 
+
 It's weird to see all Macs having the exact same power limits and same Tau values without any performance tuning, but the results from many MacBooks (Pro 16", Pro 13", Air) all point to the same 125/100W limit and DD. 
 
 For those unfamiliar, the SMC will allow CPU to go to PL1 and stay there, wait for (Tau value) seconds, and then revert to PL2 for the rest of the current session. Most of the time, a session changes only when there is a shift in CPU utilization. 
